@@ -34,6 +34,11 @@ function formatNumber(number) {
         return number;
     }
     
+    // Если число заканчивается на .0, .00 и т.д., сохраняем точку и нули
+    if (number.includes('.') && number.endsWith('0')) {
+        return number;
+    }
+    
     const num = parseFloat(number);
     if (isNaN(num)) return number;
     
@@ -42,8 +47,13 @@ function formatNumber(number) {
         return num.toExponential(6);
     }
     
-    // Ограничиваем количество знаков после запятой
-    return parseFloat(num.toFixed(8)).toString();
+    // Для чисел с точкой сохраняем точку и нули
+    if (number.includes('.')) {
+        return number;
+    }
+    
+    // Только для целых чисел применяем форматирование
+    return num.toString();
 }
 
 // Функция добавления цифры
