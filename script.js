@@ -20,3 +20,28 @@ function updateDisplay() {
     currentOperandElement.textContent = currentOperand;
     previousOperandElement.textContent = previousOperand;
 }
+
+// Функция добавления цифры
+function appendNumber(number) {
+    // Если уже есть точка и пытаемся добавить еще одну - игнорируем
+    if (number === '.' && currentOperand.includes('.')) return;
+    
+    // Если текущее число 0 и добавляем не точку - заменяем 0
+    if (currentOperand === '0' && number !== '.') {
+        currentOperand = number;
+    } else {
+        currentOperand += number;
+    }
+    
+    updateDisplay();
+}
+
+// Функция смены знака числа
+function changeSign() {
+    if (currentOperand !== '0') {
+        currentOperand = currentOperand.startsWith('-') 
+            ? currentOperand.slice(1) 
+            : '-' + currentOperand;
+        updateDisplay();
+    }
+}
