@@ -45,3 +45,32 @@ function changeSign() {
         updateDisplay();
     }
 }
+
+// Функция выбора операции
+function chooseOperation(selectedOperation) {
+    // Если нет текущего числа - выходим
+    if (currentOperand === '') return;
+    
+    // Если есть предыдущее число - вычисляем результат
+    if (previousOperand !== '') {
+        compute();
+    }
+    
+    // Сохраняем операцию и текущее число
+    operation = selectedOperation;
+    previousOperand = currentOperand + ' ' + getOperationSymbol(selectedOperation);
+    currentOperand = '';
+    
+    updateDisplay();
+}
+
+// Функция получения символа операции для отображения
+function getOperationSymbol(operation) {
+    switch(operation) {
+        case '+': return '+';
+        case '-': return '-';
+        case '×': return '×';
+        case '÷': return '÷';
+        default: return operation;
+    }
+}
