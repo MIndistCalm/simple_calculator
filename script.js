@@ -47,8 +47,12 @@ function formatNumber(number) {
         return num.toExponential(6);
     }
     
-    // Для чисел с точкой сохраняем точку и нули
+    // Ограничиваем количество знаков после запятой до 6
     if (number.includes('.')) {
+        const parts = number.split('.');
+        if (parts[1].length > 6) {
+            return parseFloat(num.toFixed(6)).toString();
+        }
         return number;
     }
     
