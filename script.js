@@ -114,3 +114,32 @@ function compute() {
     
     updateDisplay();
 }
+
+// Добавляем обработчики событий для всех кнопок
+document.addEventListener('DOMContentLoaded', function() {
+    // Кнопка очистки
+    document.querySelector('.clear').addEventListener('click', clear);
+    
+    // Кнопка смены знака
+    document.querySelector('.sign').addEventListener('click', changeSign);
+    
+    // Кнопки с цифрами
+    document.querySelectorAll('.number').forEach(button => {
+        button.addEventListener('click', () => {
+            appendNumber(button.textContent);
+        });
+    });
+    
+    // Кнопки операций
+    document.querySelectorAll('.operator').forEach(button => {
+        button.addEventListener('click', () => {
+            chooseOperation(button.textContent);
+        });
+    });
+    
+    // Кнопка равно
+    document.querySelector('.equals').addEventListener('click', compute);
+});
+
+// Инициализируем дисплей при загрузке
+updateDisplay();
