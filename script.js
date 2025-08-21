@@ -29,6 +29,11 @@ function updateDisplay() {
 function formatNumber(number) {
     if (number === '') return '';
     
+    // Если число заканчивается на точку, не форматируем его
+    if (number.endsWith('.')) {
+        return number;
+    }
+    
     const num = parseFloat(number);
     if (isNaN(num)) return number;
     
@@ -46,11 +51,15 @@ function appendNumber(number) {
     // Если уже есть точка и пытаемся добавить еще одну - игнорируем
     if (number === '.' && currentOperand.includes('.')) return;
     
-    // Ограничиваем длину числа до 12 символов
+    // Ограничиваем длину числа до 12 символов (но точка считается как символ)
     if (currentOperand.length >= 12) return;
     
+    // Если текущее число 0 и добавляем точку - добавляем точку к 0
+    if (currentOperand === '0' && number === '.') {
+        currentOperand = '0.';
+    }
     // Если текущее число 0 и добавляем не точку - заменяем 0
-    if (currentOperand === '0' && number !== '.') {
+    else if (currentOperand === '0' && number !== '.') {
         currentOperand = number;
     } else {
         currentOperand += number;
