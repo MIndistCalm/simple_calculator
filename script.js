@@ -74,3 +74,43 @@ function getOperationSymbol(operation) {
         default: return operation;
     }
 }
+
+// Функция выполнения вычислений
+function compute() {
+    let computation;
+    const prev = parseFloat(previousOperand);
+    const current = parseFloat(currentOperand);
+    
+    // Если нет чисел для вычисления - выходим
+    if (isNaN(prev) || isNaN(current)) return;
+    
+    // Выполняем операцию в зависимости от выбранной
+    switch (operation) {
+        case '+':
+            computation = prev + current;
+            break;
+        case '-':
+            computation = prev - current;
+            break;
+        case '×':
+            computation = prev * current;
+            break;
+        case '÷':
+            // Проверяем деление на ноль
+            if (current === 0) {
+                alert('Деление на ноль невозможно!');
+                return;
+            }
+            computation = prev / current;
+            break;
+        default:
+            return;
+    }
+    
+    // Обновляем текущее число результатом
+    currentOperand = computation.toString();
+    operation = undefined;
+    previousOperand = '';
+    
+    updateDisplay();
+}
