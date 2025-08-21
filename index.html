@@ -6,6 +6,31 @@
     <title>Простой калькулятор</title> <!-- Заголовок страницы, отображаемый в браузере -->
   </head> <!-- Закрывающий тег секции заголовка -->
   <body> <!-- Открывающий тег тела документа -->
-    <!-- Здесь будет содержимое калькулятора -->
+    <div class="calculator"> <!-- Основной контейнер калькулятора -->
+      <div class="display"> <!-- Контейнер для дисплея калькулятора -->
+        <div class="previous-operand"></div> <!-- Область для отображения предыдущего операнда и операции -->
+        <div class="current-operand">0</div> <!-- Область для отображения текущего вводимого числа -->
+      </div> <!-- Закрывающий тег дисплея -->
+      <div class="buttons"> <!-- Контейнер для всех кнопок калькулятора -->
+        <button class="btn clear">C</button> <!-- Кнопка очистки (Clear) -->
+        <button class="btn sign">±</button> <!-- Кнопка смены знака числа -->
+        <button class="btn operator">÷</button> <!-- Кнопка операции деления -->
+        <button class="btn number">7</button> <!-- Кнопка с цифрой 7 -->
+        <button class="btn number">8</button> <!-- Кнопка с цифрой 8 -->
+        <button class="btn number">9</button> <!-- Кнопка с цифрой 9 -->
+        <button class="btn operator">×</button> <!-- Кнопка операции умножения -->
+        <button class="btn number">4</button> <!-- Кнопка с цифрой 4 -->
+        <button class="btn number">5</button> <!-- Кнопка с цифрой 5 -->
+        <button class="btn number">6</button> <!-- Кнопка с цифрой 6 -->
+        <button class="btn operator">-</button> <!-- Кнопка операции вычитания -->
+        <button class="btn number">1</button> <!-- Кнопка с цифрой 1 -->
+        <button class="btn number">2</button> <!-- Кнопка с цифрой 2 -->
+        <button class="btn number">3</button> <!-- Кнопка с цифрой 3 -->
+        <button class="btn operator">+</button> <!-- Кнопка операции сложения -->
+        <button class="btn number zero">0</button> <!-- Кнопка с цифрой 0 (занимает две ячейки) -->
+        <button class="btn number">.</button> <!-- Кнопка десятичной точки -->
+        <button class="btn equals">=</button> <!-- Кнопка равно для выполнения вычислений -->
+      </div> <!-- Закрывающий тег контейнера кнопок -->
+    </div> <!-- Закрывающий тег основного контейнера калькулятора -->
   </body> <!-- Закрывающий тег тела документа -->
 </html> <!-- Закрывающий тег HTML -->
