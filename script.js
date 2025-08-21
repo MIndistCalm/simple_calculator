@@ -15,16 +15,39 @@ function clear() {
     updateDisplay();
 }
 
-// Функция обновления дисплея
+// Функция обновления дисплея с форматированием
 function updateDisplay() {
-    currentOperandElement.textContent = currentOperand;
-    previousOperandElement.textContent = previousOperand;
+    // Форматируем числа для отображения
+    const formattedCurrent = formatNumber(currentOperand);
+    const formattedPrevious = formatNumber(previousOperand);
+    
+    currentOperandElement.textContent = formattedCurrent;
+    previousOperandElement.textContent = formattedPrevious;
+}
+
+// Функция форматирования чисел
+function formatNumber(number) {
+    if (number === '') return '';
+    
+    const num = parseFloat(number);
+    if (isNaN(num)) return number;
+    
+    // Если число слишком большое, используем научную нотацию
+    if (Math.abs(num) > 999999999999) {
+        return num.toExponential(6);
+    }
+    
+    // Ограничиваем количество знаков после запятой
+    return parseFloat(num.toFixed(8)).toString();
 }
 
 // Функция добавления цифры
 function appendNumber(number) {
     // Если уже есть точка и пытаемся добавить еще одну - игнорируем
     if (number === '.' && currentOperand.includes('.')) return;
+    
+    // Ограничиваем длину числа до 12 символов
+    if (currentOperand.length >= 12) return;
     
     // Если текущее число 0 и добавляем не точку - заменяем 0
     if (currentOperand === '0' && number !== '.') {
